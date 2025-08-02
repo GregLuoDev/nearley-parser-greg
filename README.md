@@ -20,3 +20,6 @@ This project is implemented with Next.js v15, Typescript, TailwindCss, Nearley, 
 
 ## Error message for invalid input
 ![error message](/public/screenshots/error.png)
+
+## Code Structure
+![code structure](/public/screenshots/code-structure.png)
