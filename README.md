@@ -12,8 +12,11 @@ This project is implemented with Next.js v15, Typescript, TailwindCss, Nearley, 
 ## UI
 ![UI screenshot](/public//screenshots/UI.png)
 
-## Total 39 test cases including 20 invalid input test cases and 17 valid cases.
+## Total 44 test cases including 24 invalid input test cases and 18 valid cases.
 ![test cases screenshot](/public/screenshots/test-cases.png)
 
 ## Generate math.js from math.ne and parse math-test.js
-![alt text](/public/screenshots/parse.png)
+![Generate and parse](/public/screenshots/parse.png)
+
+## Error message for invalid input
+![error message](/public/screenshots/error.png)
