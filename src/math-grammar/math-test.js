@@ -4,7 +4,6 @@ const grammar = require("./math.js");
 const parser = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
 
 try {
-   // parser.feed("2 * 3");
    // parser.feed("1 +     2    = 3");
    // parser.feed(" 1 + 2 = 3 ");
    parser.feed("1+2=3");
