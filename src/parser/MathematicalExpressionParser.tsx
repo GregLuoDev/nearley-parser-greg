@@ -42,6 +42,12 @@ export function MathematicalExpressionParser() {
     }
   }
 
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter") {
+      parse();
+    }
+  }
+
   return (
     <div className="flex flex-col bg-gray-100 p-6 min-h-[600px] max-w-xl w-full">
       <h1 className="text-2xl font-bold text-gray-700">
@@ -56,6 +62,7 @@ export function MathematicalExpressionParser() {
           onChange={(e) => setValue(e.target.value)}
           className="flex-1 w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           data-testid="input"
+          onKeyDown={handleKeyDown}
         />
         <button
           onClick={parse}
