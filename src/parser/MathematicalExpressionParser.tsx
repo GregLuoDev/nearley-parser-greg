@@ -10,12 +10,13 @@ export function MathematicalExpressionParser() {
   const [ast, setAst] = useState<IAst | null>(null);
   const result = ast?.value;
   const [error, setError] = useState("");
+  const [syntaxError, setSyntaxError] = useState("");
 
+  const errorMessage =
+    "Parse failed.\nThis parser can handle both arithmetic operations and comparison operators, following the rules of operator precedence and proper evaluation.\nPlease check your input.";
   const parser = new nearley.Parser(
     nearley.Grammar.fromCompiled(grammar as nearley.CompiledRules)
   );
-  const errorMessage =
-    "Parse failed.\nThis parser can handle both arithmetic operations and comparison operators, following the rules of operator precedence and proper evaluation.\nPlease check your input.";
 
   function parse() {
     try {
@@ -25,18 +26,24 @@ export function MathematicalExpressionParser() {
       if (results.length) {
         setAst(results[0]);
         setError("");
+        setSyntaxError("");
       } else {
         setError(errorMessage);
+        setSyntaxError(`Your input ${value} is not a mathematical expression`);
       }
     } catch (error: unknown) {
       let message = "Parse failed. ";
       if (error instanceof Error) {
         message += "Error.message:" + error.message;
+        const syntaxError = error.message.substring(
+          0,
+          error.message.indexOf("Instead, I was expecting to see")
+        );
+        setSyntaxError(syntaxError);
       } else {
         message += JSON.stringify(error);
       }
       console.error(message);
-
       setError(errorMessage);
       setAst(null);
     }
@@ -91,10 +98,12 @@ export function MathematicalExpressionParser() {
           <div data-testid="ast">{JSON.stringify(ast, null, 4)}</div>
         </pre>
       )}
-
       {error && (
         <div className="mt-6 w-full bg-red-100 text-red-800 border border-red-300 rounded-lg p-4 shadow whitespace-pre-line">
           <b>Error:</b> <div data-testid="error">{error}</div>
+          {syntaxError && (
+            <div className="whitespace-pre mt-4">{syntaxError}</div>
+          )}
         </div>
       )}
     </div>

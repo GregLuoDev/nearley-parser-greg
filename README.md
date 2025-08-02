@@ -1,4 +1,5 @@
 # Parser with nearley.js and moo.js by Greg Luo (greg.luo@outlook.com, 0424376962)
+The app has been deployed to Vercel. Please visit it at  https://nearley-parser-greg.vercel.app/
 
 ## Instructions:
 This project is implemented with Next.js v15, Typescript, TailwindCss, Nearley, Moo and Jest.
