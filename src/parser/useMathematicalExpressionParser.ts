@@ -27,7 +27,7 @@ export function useMathematicalExpressionParser() {
         setSyntaxError("");
       } else {
         setError(errorMessage);
-        setSyntaxError(`Your input ${value} is not a mathematical expression`);
+        setSyntaxError(`${value} is not an expression`);
       }
     } catch (error: unknown) {
       let message = "Parse failed. ";
