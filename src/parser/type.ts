@@ -1,6 +1,6 @@
 export interface IAst{
     type: string;
-    value: boolean;
+    value: boolean | number;
     first?: IAst;
     second?: IAst;
 }
