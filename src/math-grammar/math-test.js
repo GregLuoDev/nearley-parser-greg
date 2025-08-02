@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const nearley = require("nearley");
 const grammar = require("./math.js");
 
