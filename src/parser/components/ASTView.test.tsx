@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { ParseAST } from "./ParseAST"; 
+import { ASTView } from "./ASTView"; 
 
 describe("ParseAST", () => {
   test("renders AST when provided", () => {
@@ -10,7 +10,7 @@ describe("ParseAST", () => {
       value: 3,
     };
 
-    render(<ParseAST ast={sampleAst} />);
+    render(<ASTView ast={sampleAst} />);
 
     const astEl = screen.getByTestId("ast");
     expect(astEl).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe("ParseAST", () => {
   });
 
   test("does not render anything when ast is null", () => {
-    render(<ParseAST ast={null} />);
+    render(<ASTView ast={null} />);
 
     const astEl = screen.queryByTestId("ast");
     expect(astEl).not.toBeInTheDocument();

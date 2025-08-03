@@ -1,7 +1,8 @@
 "use client";
 
+import { ExpressionTree } from "./components/ExpressionTree";
 import { InputBoxAndParseButton } from "./components/InputBoxAndParseButton";
-import { ParseAST } from "./components/ParseAST";
+import { ASTView } from "./components/ASTView";
 import { ParseError } from "./components/ParseError";
 import { ParseResult } from "./components/ParseResult";
 import { useMathematicalExpressionParser } from "./useMathematicalExpressionParser";
@@ -18,7 +19,7 @@ export function MathematicalExpressionParser() {
   } = useMathematicalExpressionParser();
 
   return (
-    <div className="flex flex-col bg-gray-100 p-6 min-h-[600px] max-w-xl w-full">
+    <>
       <h1 className="text-2xl font-bold text-gray-700">
         Mathematical Expressions Parser
       </h1>
@@ -32,9 +33,10 @@ export function MathematicalExpressionParser() {
 
       <ParseResult result={result} />
 
-      <ParseAST ast={ast} />
+      <ExpressionTree ast={ast} />
+      <ASTView ast={ast} />
 
       <ParseError error={error} />
-    </div>
+    </>
   );
 }
