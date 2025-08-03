@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import { IAst, INode } from "../type";
@@ -27,7 +28,7 @@ export function ExpressionTree({ ast }: { ast: IAst | null }) {
     const rootData = convertAstToD3Tree(ast);
     const root = d3.hierarchy(rootData);
     const treeLayout = d3.tree().size([width - 100, height - 100]);
-    treeLayout(root);
+    treeLayout(root as d3.HierarchyNode<unknown>);
 
     const g = svg.append("g").attr("transform", "translate(50, 50)");
 
@@ -43,8 +44,8 @@ export function ExpressionTree({ ast }: { ast: IAst | null }) {
         "d",
         d3
           .linkVertical()
-          .x((d) => d.x)
-          .y((d) => d.y)
+          .x((d: any) => d.x)
+          .y((d: any) => d.y) as any
       );
 
     // Draw nodes
