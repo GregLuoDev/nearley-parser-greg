@@ -15,7 +15,6 @@ export function MathematicalExpressionParser() {
     ast,
     result,
     error,
-    syntaxError,
   } = useMathematicalExpressionParser();
 
   return (
@@ -35,7 +34,7 @@ export function MathematicalExpressionParser() {
 
       <ParseAST ast={ast} />
 
-      <ParseError error={error} syntaxError={syntaxError} />
+      <ParseError error={error} />
     </div>
   );
 }

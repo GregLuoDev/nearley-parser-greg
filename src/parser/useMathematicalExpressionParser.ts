@@ -8,7 +8,6 @@ export function useMathematicalExpressionParser() {
   const [ast, setAst] = useState<IAst | null>(null);
   const result = ast?.value;
   const [error, setError] = useState("");
-  const [syntaxError, setSyntaxError] = useState("");
 
   const errorMessage =
     "Parse failed.\nThis parser can handle both arithmetic operations and comparison operators, following the rules of operator precedence and proper evaluation.\nPlease check your input.";
@@ -24,25 +23,19 @@ export function useMathematicalExpressionParser() {
       if (results.length) {
         setAst(results[0]);
         setError("");
-        setSyntaxError("");
       } else {
-        setError(errorMessage);
-        setSyntaxError(`${value} is not an expression`);
+        setError(`${errorMessage}\n\n${value} is not an expression`);
       }
     } catch (error: unknown) {
-      let message = "Parse failed. ";
       if (error instanceof Error) {
-        message += "Error.message:" + error.message;
         const syntaxError = error.message.substring(
           0,
           error.message.indexOf("Instead, I was expecting to see")
-        );
-        setSyntaxError(syntaxError);
-      } else {
-        message += JSON.stringify(error);
+        ).replace("line 1 ","").replace("1  ","   ");
+        setError(`${errorMessage}\n\n${syntaxError}`);
+        const message = "Parse failed. Error.message:" + error.message;
+        console.error(message);
       }
-      console.error(message);
-      setError(errorMessage);
       setAst(null);
     }
   }
@@ -65,6 +58,5 @@ export function useMathematicalExpressionParser() {
     ast,
     result,
     error,
-    syntaxError,
   };
 }
