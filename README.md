@@ -2,7 +2,7 @@
 The app has been deployed to Vercel. Please visit it at  https://nearley-parser-greg.vercel.app/
 
 ## Instructions:
-This project is implemented with Next.js v15, Typescript, TailwindCss, Nearley, Moo and Jest.
+This project is implemented with Next.js v15, Typescript, TailwindCss, Nearley, Moo, D3 and Jest.
 
 - install dependencies:   npm i
 - run the app locally:    npm run dev
@@ -10,6 +10,7 @@ This project is implemented with Next.js v15, Typescript, TailwindCss, Nearley, 
 - generate math.js from math.ne and parse math-test.js:   **npm run math**
 
 ## UI
+It includes the expression tree implemented with D3.js and AST.
 ![UI screenshot](/public//screenshots/UI.png)
 
 ## Total 44 test cases including 24 invalid input test cases and 18 valid cases.
